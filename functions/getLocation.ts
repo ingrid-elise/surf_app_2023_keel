@@ -1,7 +1,7 @@
-import { GetLocation } from '@teamkeel/sdk';
+import { models, permissions, api, GetLocation } from '@teamkeel/sdk';
 
-export default GetLocation(async (input, api) => {
-	api.permissions.allow()
+export default GetLocation(async (input) => {
+	permissions.allow()
 
 	 // get the lat and long from the input type
 	const { latitude, longitude } = input;

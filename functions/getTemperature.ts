@@ -1,7 +1,7 @@
-import { GetTemperature } from "@teamkeel/sdk";
+import { models, permissions, api, GetTemperature } from "@teamkeel/sdk";
 
-export default GetTemperature(async (input, api) => {
-    api.permissions.allow()
+export default GetTemperature(async (input) => {
+    permissions.allow()
 	 // get the lat and long from the input type
 	 const { latitude, longitude } = input;
 	const params = "airTemperature";

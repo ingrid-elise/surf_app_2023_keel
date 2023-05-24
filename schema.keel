@@ -34,23 +34,35 @@ model Weather {
     functions {
         read getTemperature(GetTemperatureInput) returns (Any)
     }
+
+    // row based permission rule allowing permissions to actions of get, list, create
+    @permission(
+        expression: true,
+        actions: [get, list, create]
+    )
 }
 
 model Location {
     fields {
-        location Location
         latitude Text
         longitude Text
     }
 
     operations {
         create createLocation() with (latitude, longitude)
+        list listLocation()
     }
 
     functions {
         read getLocation(GetLocationInput) returns (Any)
+        read checkUserLocation(GetLocationInput) returns (Any)
         // @where(location.location == "Bondi Beach")
     }
+
+    @permission(
+        expression: true,
+        actions: [get, list, create]
+    )
 }
 
 api Web {
